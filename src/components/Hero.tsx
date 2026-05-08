@@ -8,7 +8,7 @@ const Hero = () => {
       const opts: Intl.DateTimeFormatOptions = {
         hour: '2-digit',
         minute: '2-digit',
-        timeZone: 'Europe/France',
+        timeZone: 'Europe/Paris',
       };
       setTime(d.toLocaleTimeString('fr-FR', opts));
     };
