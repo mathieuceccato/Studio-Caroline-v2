@@ -17,7 +17,7 @@ const Portfolio = () => {
   ];
   const visible = filter==='Tous' ? projects : projects.filter(p=>p.cat===filter);
 
-  const sizeStyle = (size) => {
+  const sizeStyle = (size: string) => {
     if (size==='tall') return { gridColumn:'span 4', aspectRatio:'4/5' };
     if (size==='wide') return { gridColumn:'span 8', aspectRatio:'16/10' };
     return { gridColumn:'span 4', aspectRatio:'1/1' };
@@ -55,8 +55,10 @@ const Portfolio = () => {
               <div className="photo" data-photo={p.photo} style={{position:'absolute',inset:0,transition:'transform .8s cubic-bezier(.2,.7,.2,1)'}} ref={el=>{
                 if(!el) return;
                 const card = el.parentElement;
-                card.onmouseenter=()=>{el.style.transform='scale(1.04)'};
-                card.onmouseleave=()=>{el.style.transform='scale(1)'};
+                if (card) {
+                  card.onmouseenter=()=>{el.style.transform='scale(1.04)'};
+                  card.onmouseleave=()=>{el.style.transform='scale(1)'};
+                }
               }}/>
               <div style={{
                 position:'absolute',inset:0,

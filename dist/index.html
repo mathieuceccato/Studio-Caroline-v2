@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Caroline — Architecture d'intérieur & Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-Dkm791-v.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DErXrzKJ.css">
+</head>
+
+<body>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div id="root"></div>
+  <script>
+    // Cursor dot
+    (function () {
+      const dot = document.getElementById('cursorDot');
+      if (!dot) return;
+      let x = window.innerWidth / 2, y = window.innerHeight / 2;
+      let tx = x, ty = y;
+      document.addEventListener('mousemove', e => {
+        tx = e.clientX; ty = e.clientY;
+        document.body.style.setProperty('--mx', e.clientX + 'px');
+        document.body.style.setProperty('--my', e.clientY + 'px');
+      });
+      function loop() {
+        x += (tx - x) * 0.18; y += (ty - y) * 0.18;
+        dot.style.left = x + 'px'; dot.style.top = y + 'px';
+        requestAnimationFrame(loop);
+      }
+      loop();
+      document.addEventListener('mouseover', e => {
+        if (e.target.closest('a,button,.hov')) dot.classList.add('hover');
+        else dot.classList.remove('hover');
+      });
+    })();
+
+    // Reveal observer
+    (function () {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      const mo = new MutationObserver(() => {
+        document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+      });
+      mo.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+</body>
+
+</html>

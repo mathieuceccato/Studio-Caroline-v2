@@ -1,4 +1,4 @@
-const Marquee = ({items, speed=40}) => (
+const Marquee = ({items, speed=40}: {items: string[], speed?: number}) => (
   <div style={{overflow:'hidden',padding:'30px 0',borderTop:'1px solid var(--line)',borderBottom:'1px solid var(--line)'}}>
     <div className="marquee" style={{animationDuration: speed+'s'}}>
       {[...items, ...items].map((it,i)=>(

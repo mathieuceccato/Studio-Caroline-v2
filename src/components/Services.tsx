@@ -8,7 +8,7 @@ const Services = () => {
     { n:'03', t:'Conseil & curation', d:'Accompagnement de collectionneurs et institutions sur l\'achat, le placement et la conservation d\'œuvres, mobilier de collection et pièces vintages.', tags:['Curation','Sourcing','Estimation'] },
     { n:'04', t:'Réhabilitation patrimoniale', d:'Lecture et réinvention de bâtiments anciens. Diagnostic, dossier ABF, dialogue avec les compagnons et restaurateurs spécialisés.', tags:['Patrimoine','ABF','Artisanat'] },
   ];
-  const [hover, setHover] = useState(null);
+  const [hover, setHover] = useState<number | null>(null);
   return (
     <section className="sec" id="services">
       <SectionHeader

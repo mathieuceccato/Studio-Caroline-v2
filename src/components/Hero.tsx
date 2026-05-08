@@ -5,8 +5,12 @@ const Hero = () => {
   useEffect(()=>{
     const tick=()=>{
       const d=new Date();
-      const opts={hour:'2-digit',minute:'2-digit',timeZone:'Europe/Monaco'};
-      setTime(d.toLocaleTimeString('fr-FR',opts));
+      const opts: Intl.DateTimeFormatOptions = {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Europe/France',
+      };
+      setTime(d.toLocaleTimeString('fr-FR', opts));
     };
     tick();
     const id=setInterval(tick,30000);

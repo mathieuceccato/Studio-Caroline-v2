@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 
-const NavBar = ({open, setOpen, scrolled}) => {
+const NavBar = ({ scrolled }: { scrolled: boolean }) => {
   const links = [
     ['Vision','#vision'],
     ['Services','#services'],
